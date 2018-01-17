@@ -13,3 +13,9 @@ Non-targeted images were obtained by initially generating a random uniform array
 **Non-targeted adversarial image with label 4, but is predicted as 9**
 
 Targeted images are obtained by minimizing the difference between the adversarial image generated with a sample image in the dataset (with the required class) in addition to that done above. This means that this method needs access and knowledge of how the classifier/dataset works. 
+
+The adversarial images were analyzed on a convolution neural network trained on the MNIST dataset separately (with a 99% test accuracy). It was seen that most of the adversarial images (both targeted and nontargeted) were incorrectly classified even after several runs. The feature map for the network that is fed an adversarial image is seen below for for the first two activations and shows difficulty in understanding/obtaining proper features to learn from an image that looks like a '4'.
+
+![alt_text](/output_images/Featuremap.png)
+
+A simple way of successfully classifying adversarial images would be to retrain the network for another iteration on the generated "fake" images given correct classes.
